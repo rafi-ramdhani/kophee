@@ -9,6 +9,11 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        "mocha-brown": "var(--mocha-brown)",
+        cream: "var(--cream)",
+        espresso: "var(--espresso)",
+        "warm-gray": "var(--warm-gray)",
+        "olive-green": "var(--olive-green)",
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
