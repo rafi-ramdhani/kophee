@@ -1,6 +1,23 @@
 import Image from "next/image";
 import { Fragment } from "react";
 
+const AboutUsTitle = ({ isFirstOne = false }: { isFirstOne?: boolean }) => {
+  return (
+    <div
+      className={`${isFirstOne ? "hidden lg:flex" : "flex lg:hidden"} flex-col items-center`}
+    >
+      <h2 className="text-mocha-brown text-3xl lg:text-6xl font-bold">
+        About Us
+      </h2>
+      <div className="flex gap-2">
+        <div className="border-b-mocha-brown border-b-2 w-[100px] mt-1 mb-4" />
+        <div className="border-b-mocha-brown border-b-2 w-[10px] mt-1 mb-4" />
+        <div className="border-b-mocha-brown border-b-2 w-[4px] mt-1 mb-4" />
+      </div>
+    </div>
+  );
+};
+
 export default function Home() {
   return (
     <Fragment>
@@ -41,18 +58,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="about-us" className="relative pt-20 pb-20">
-        <div className="flex flex-col items-center">
-          <h2 className="text-mocha-brown text-3xl lg:text-6xl font-bold">
-            About Us
-          </h2>
-          <div className="flex gap-2">
-            <div className="border-b-mocha-brown border-b-2 w-[100px] mt-1 mb-4" />
-            <div className="border-b-mocha-brown border-b-2 w-[10px] mt-1 mb-4" />
-            <div className="border-b-mocha-brown border-b-2 w-[4px] mt-1 mb-4" />
-          </div>
-        </div>
-        <div className="flex flex-col lg:flex-row justify-center items-center lg:gap-8 mt-10 lg:h-[600px]">
+      <section id="about-us" className="relative bg-cream pt-10 lg:pt-20 pb-20">
+        <AboutUsTitle isFirstOne />
+        <div className="flex flex-col lg:flex-row justify-center items-center lg:gap-8 lg:mt-10 lg:h-[600px]">
           <div className="relative h-[300px] lg:h-[600px] min-h-[300px] w-full lg:w-[400px] lg:rounded-l-[600px] overflow-hidden border-l-mocha-brown lg:border-l-[10px]">
             <Image
               fill
@@ -62,7 +70,8 @@ export default function Home() {
               alt="Kophee Hero Section Background Image"
             />
           </div>
-          <div className="w-full lg:w-[600px] pt-6 pb-6 h-full flex justify-center items-center lg:rounded-r-[600px] border-r-mocha-brown lg:border-r-[10px] bg-mocha-brown lg:bg-transparent">
+          <div className="w-full lg:w-[600px] pt-6 pb-6 h-full flex flex-col lg:flex-row justify-center items-center lg:rounded-r-[600px] border-r-mocha-brown lg:border-r-[10px] bg-espresso lg:bg-transparent">
+            <AboutUsTitle />
             <p className="text-cream lg:text-mocha-brown text-base lg:text-xl w-10/12 text-center lg:text-left">
               At <strong>Kophee</strong>, we believe that every cup of coffee
               tells a story. Founded with a passion for the perfect brew, our
