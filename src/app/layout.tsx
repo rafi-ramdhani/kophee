@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Merriweather } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   title: "Kophee",
@@ -21,6 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${merriweather.className} antialiased`}>
         {children}
+        <SpeedInsights />
       </body>
     </html>
   );
