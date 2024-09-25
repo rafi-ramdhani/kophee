@@ -169,7 +169,10 @@ const Menu = ({ type }: { type: "food" | "beverage" }) => {
       <div className="flex flex-col gap-16 lg:gap-10">
         {MENU[type].map((item) => {
           return (
-            <div key={item.name} className="flex flex-col gap-4 md:flex-row md:gap-20">
+            <div
+              key={item.name}
+              className="flex flex-col gap-4 md:flex-row md:gap-20"
+            >
               <div className="relative w-[150px] h-[150px] min-w-[150px] min-h-[150px] md:w-[200px] md:h-[200px] md:min-w-[200px] md:min-h-[200px] border-l-warm-gray border-l-4 border-b-warm-gray border-b-4">
                 <Image
                   fill
@@ -180,7 +183,9 @@ const Menu = ({ type }: { type: "food" | "beverage" }) => {
                 />
               </div>
               <div className="flex flex-col justify-center">
-                <h4 className="text-cream font-bold text-base md:text-xl">{item.name}</h4>
+                <h4 className="text-cream font-bold text-base md:text-xl">
+                  {item.name}
+                </h4>
                 <p className="text-cream font-normal text-sm md:text-lg italic">
                   {item.description}
                 </p>
@@ -265,10 +270,15 @@ export default function Home() {
 
       <section
         id="menu"
-        className="w-full lg:w-10/12 max-w-[1600px] m-auto bg-olive-green pb-20 pt-20 pl-10 pr-10 mt-40"
+        className="w-full lg:w-10/12 max-w-[1600px] ml-auto bg-olive-green pb-20 pt-20 pl-10 pr-10 mt-40"
       >
         <h2 className="text-cream font-bold text-6xl md:text-8xl">Menu</h2>
+        <div className="flex flex-col gap-4">
+          <div className="w-full border-b-2 border-cream"></div>
+          <div className="w-full border-b-2 border-cream translate-x-10"></div>
+        </div>
         <Menu type="beverage" />
+        <div className="w-full border-b-2 border-cream translate-x-10 mt-10"></div>
         <Menu type="food" />
       </section>
     </Fragment>
