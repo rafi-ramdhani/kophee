@@ -143,6 +143,75 @@ const MENU = {
   ],
 };
 
+const TESTIMONIALS = [
+  {
+    name: "Sarah M.",
+    feedback:
+      "I’ve been to a lot of coffee shops, but this place truly stands out! The atmosphere is cozy, the staff is incredibly friendly, and the coffee? Absolutely perfect! Whether I need a quick pick-me-up or a spot to relax, this is my go-to café.",
+    translate: { x: 0, y: -20 },
+  },
+  {
+    name: "James L.",
+    feedback:
+      "The best latte I’ve ever had! The balance of flavors was just right, and the presentation was beautiful. I also loved the homemade pastries, especially the croissant. Can’t wait to come back!",
+    translate: { x: 0, y: -100 },
+  },
+  {
+    name: "Rachel P.",
+    feedback:
+      "This coffee shop is a hidden gem! The vibe is so welcoming, and they have a fantastic selection of brews. I’m a huge fan of their cold brew—it’s rich, smooth, and perfectly refreshing. Highly recommended!",
+    translate: { x: -20, y: 20 },
+  },
+  {
+    name: "David K.",
+    feedback:
+      "It’s not just the coffee that makes this place special, but the entire experience. The baristas are passionate about what they do, and it shows in every cup they serve. The attention to detail is amazing!",
+    translate: { x: 0, y: 0 },
+  },
+  {
+    name: "Emily R.",
+    feedback:
+      "I absolutely love this spot! The coffee is always brewed to perfection, and the avocado toast is my go-to snack. The warm, inviting environment makes it the perfect place to work or meet up with friends.",
+    translate: { x: 0, y: 50 },
+  },
+  {
+    name: "Lily Thompson",
+    feedback:
+      "The atmosphere here is incredible! The perfect spot to relax and enjoy a cup of coffee. Every cup feels like it’s brewed with care. My favorite new coffee shop!",
+    translate: { x: -50, y: -100 },
+  },
+  {
+    name: "Jacob Miller",
+    feedback:
+      "The best coffee I’ve had in ages. The flavor is rich and smooth, and they always have the freshest beans. Highly recommended for any coffee lover!",
+    translate: { x: -20, y: -20 },
+  },
+  {
+    name: "Amanda Garcia",
+    feedback:
+      "The staff is super friendly and welcoming! They always remember my name and my go-to order. It feels like home every time I visit.",
+    translate: { x: -20, y: 50 },
+  },
+  {
+    name: "Sophia Nguyen",
+    feedback:
+      "This place has such a cozy vibe! Whether you’re here to work or catch up with friends, it’s always comfortable. Plus, their pastries are just as good as their coffee.",
+    translate: { x: -20, y: 0 },
+  },
+  {
+    name: "David Chen",
+    feedback:
+      "It’s not just the coffee that keeps me coming back—the food is amazing too! The sandwiches and pastries pair perfectly with their signature lattes.",
+    translate: { x: -20, y: 30 },
+  },
+  {
+    name: "Emma Rodriguez",
+    feedback:
+      "The blend of local ingredients and creative drinks makes every visit a new experience. You won’t find another coffee shop like this!",
+    translate: { x: 20, y: 20 },
+  },
+];
+
 const AboutUsTitle = ({ isFirstOne = false }: { isFirstOne?: boolean }) => {
   return (
     <div
@@ -280,6 +349,31 @@ export default function Home() {
         <Menu type="beverage" />
         <div className="w-full border-b-2 border-cream translate-x-10 mt-10"></div>
         <Menu type="food" />
+      </section>
+
+      <section
+        id="testimonial"
+        className="mt-40 w-full flex flex-col items-center bg-mocha-brown pt-10 pb-10"
+      >
+        <h2 className="text-cream font-bold text-3xl md:text-4xl lg:text-6xl">What they say..</h2>
+        <div className="flex w-[2000px] flex-wrap border-cream justify-center mt-10 items-start">
+          {TESTIMONIALS.map((item) => {
+            return (
+              <div
+                key={item.name}
+                className="text-cream min-w-[300px] max-w-[300px] p-4"
+                style={{
+                  translate: `${item.translate.x}px ${item.translate.y}px`,
+                }}
+              >
+                <p className="italic text-sm lg:text-base text-center">
+                  “{item.feedback}” — <strong></strong>
+                  {item.name}
+                </p>
+              </div>
+            );
+          })}
+        </div>
       </section>
     </Fragment>
   );
