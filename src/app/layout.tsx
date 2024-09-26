@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-pt-10 lg:scroll-pt-14">
       <body className={`${merriweather.className} antialiased`}>
         {children}
         <SpeedInsights />

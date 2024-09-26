@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { Fragment } from "react";
 import GoogleMap from "./ui/google-map";
+import Link from "next/link";
+import BurgerMenu from "./ui/burger-menu";
 
 const MENU = {
   food: [
@@ -213,7 +215,7 @@ const TESTIMONIALS = [
   },
 ];
 
-const AboutUsTitle = ({ isFirstOne = false }: { isFirstOne?: boolean }) => {
+function AboutUsTitle({ isFirstOne = false }: { isFirstOne?: boolean }) {
   return (
     <div
       className={`${isFirstOne ? "hidden lg:flex" : "flex lg:hidden"} flex-col items-center`}
@@ -228,9 +230,9 @@ const AboutUsTitle = ({ isFirstOne = false }: { isFirstOne?: boolean }) => {
       </div>
     </div>
   );
-};
+}
 
-const Menu = ({ type }: { type: "food" | "beverage" }) => {
+function Menu({ type }: { type: "food" | "beverage" }) {
   return (
     <div className="flex flex-col lg:flex-row gap-10 lg:gap-0 mt-20">
       <h3 className="text-cream font-bold text-2xl md:text-3xl min-w-[200px] capitalize">
@@ -266,12 +268,41 @@ const Menu = ({ type }: { type: "food" | "beverage" }) => {
       </div>
     </div>
   );
-};
+}
 
 export default function Home() {
   return (
     <Fragment>
-      <section id="hero" className="relative">
+      <header className="fixed bg-espresso h-10 lg:h-14 w-full top-0 z-30 flex items-center justify-center">
+        <nav className="relative flex justify-between items-center pl-4 pr-4 lg:pl-10 lg:pr-10 w-full max-w-[1600px]">
+          <Link href="#home">
+            <h2 className="text-cream text-xl lg:text-3xl font-bold">Kophee</h2>
+          </Link>
+
+          <div className="flex items-center">
+            <ul className="hidden lg:flex gap-10">
+              <li className="text-cream text-base font-bold hover:opacity-80">
+                <Link href="#home">Home</Link>
+              </li>
+              <li className="text-cream text-base font-bold hover:opacity-80">
+                <Link href="#about">About</Link>
+              </li>
+              <li className="text-cream text-base font-bold hover:opacity-80">
+                <Link href="#menu">Menu</Link>
+              </li>
+              <li className="text-cream text-base font-bold hover:opacity-80">
+                <Link href="#feedback">Feedback</Link>
+              </li>
+              <li className="text-cream text-base font-bold hover:opacity-80">
+                <Link href="#location">Location</Link>
+              </li>
+            </ul>
+            <BurgerMenu />
+          </div>
+        </nav>
+      </header>
+
+      <section id="home" className="relative mt-10 lg:mt-14 lg:border-8 border-cream lg:pb-40 bg-cream">
         {/* hero section */}
         <div className="relative h-[600px] h-max-[600px] md:lg:h-[700px] md:lg:h-max-[700px]">
           {/* image container */}
@@ -290,10 +321,12 @@ export default function Home() {
               <h1 className="text-espresso font-bold text-6xl sm:text-8xl lg:text-9xl">
                 Kophee
               </h1>
-              <button className="relative z-10 h-12 w-fit flex items-center justify-center gap-2 self-start lg:self-end pl-8 pr-6 bg-cream text-mocha-brown hover:opacity-80 active:opacity-90 mt-10">
-                <h2>Explore</h2>
-                <h2>&rarr;</h2>
-              </button>
+              <Link href="#menu" className="block self-start lg:self-end">
+                <button className="relative z-10 h-10 lg:h-12 w-fit flex items-center justify-center gap-2 self-start lg:self-end pl-4 pr-4 lg:pl-8 lg:pr-6 bg-cream text-mocha-brown hover:opacity-80 active:opacity-90 mt-10">
+                  <h2>See Menu</h2>
+                  <h2>&rarr;</h2>
+                </button>
+              </Link>
             </div>
 
             <div className="mt-10">
@@ -308,7 +341,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="about-us" className="relative bg-cream lg:pt-52 lg:pb-20">
+      <section id="about" className="relative bg-cream lg:pt-12 lg:pb-20">
         <AboutUsTitle isFirstOne />
         <div className="flex flex-col lg:flex-row justify-center items-center lg:gap-8 lg:mt-10 lg:h-[600px]">
           <div className="relative h-[500px] lg:h-[600px] min-h-[500px] w-full lg:w-[400px] lg:rounded-l-[600px] overflow-hidden border-l-mocha-brown lg:border-l-[10px]">
@@ -338,50 +371,51 @@ export default function Home() {
         </div>
       </section>
 
-      <section
-        id="menu"
-        className="w-full lg:w-10/12 max-w-[1600px] ml-auto bg-olive-green pb-20 pt-20 pl-10 pr-10 lg:mt-40"
-      >
-        <h2 className="text-cream font-bold text-6xl md:text-8xl">Menu</h2>
-        <div className="flex flex-col gap-4">
-          <div className="w-full border-b-2 border-cream"></div>
-          <div className="w-full border-b-2 border-cream translate-x-10"></div>
-        </div>
-        <Menu type="beverage" />
-        <div className="w-full border-b-2 border-cream translate-x-10 mt-10"></div>
-        <Menu type="food" />
-      </section>
-
-      <section
-        id="testimonial"
-        className="lg:mt-40 w-full flex flex-col items-center bg-mocha-brown pt-10 pb-10"
-      >
-        <h2 className="text-cream font-bold text-3xl md:text-4xl lg:text-6xl">
-          What they say..
-        </h2>
-        <div className="flex w-[2000px] flex-wrap border-cream justify-center mt-10 items-start">
-          {TESTIMONIALS.map((item) => {
-            return (
-              <div
-                key={item.name}
-                className="text-cream min-w-[300px] max-w-[300px] p-4"
-                style={{
-                  translate: `${item.translate.x}px ${item.translate.y}px`,
-                }}
-              >
-                <p className="italic text-sm lg:text-base text-center">
-                  “{item.feedback}” — <strong></strong>
-                  {item.name}
-                </p>
-              </div>
-            );
-          })}
+      <section id="menu" className="bg-cream lg:pt-40 lg:pb-80">
+        <div className="w-full lg:w-10/12 max-w-[1600px] ml-auto bg-olive-green pb-20 pt-20 pl-10 pr-10">
+          <h2 className="text-cream font-bold text-6xl md:text-8xl">Menu</h2>
+          <div className="flex flex-col gap-4">
+            <div className="w-full border-b-2 border-cream"></div>
+            <div className="w-full border-b-2 border-cream translate-x-10"></div>
+          </div>
+          <Menu type="beverage" />
+          <div className="w-full border-b-2 border-cream translate-x-10 mt-10"></div>
+          <Menu type="food" />
         </div>
       </section>
 
-      <section id="find-us" className="flex justify-center lg:mt-40 mb-20">
+      <section
+        id="feedback"
+        className="bg-cream"
+      >
+        <div className="w-full flex flex-col items-center bg-mocha-brown pt-10 pb-10">
+          <h2 className="text-cream font-bold text-3xl md:text-4xl lg:text-6xl">
+            What they say..
+          </h2>
+          <div className="flex w-[2000px] flex-wrap border-cream justify-center mt-10 items-start">
+            {TESTIMONIALS.map((item) => {
+              return (
+                <div
+                  key={item.name}
+                  className="text-cream min-w-[300px] max-w-[300px] p-4"
+                  style={{
+                    translate: `${item.translate.x}px ${item.translate.y}px`,
+                  }}
+                >
+                  <p className="italic text-sm lg:text-base text-center">
+                    “{item.feedback}” — <strong></strong>
+                    {item.name}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section id="location" className="flex justify-center lg:pt-40 pb-20 bg-cream">
         <div className="flex flex-col lg:flex-row h-fit lg:h-[600px] w-full lg:w-fit">
-          <div className="w-full lg:w-[500px] h-[500px] min-h-[500px] lg:border-l-4 border-b-4 border-mocha-brown">
+          <div className="relative z-0 w-full lg:w-[500px] h-[500px] min-h-[500px] lg:border-l-4 border-b-4 border-mocha-brown">
             <GoogleMap />
           </div>
           <div className="flex flex-col p-10 max-w-[500px]">
@@ -417,8 +451,10 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="h-20 bg-espresso w-full flex justify-center items-center">
-        <p className="text-cream font-bold text-xl">© 2024 Kophee. All Rights Reserved.</p>
+      <footer className="h-10 lg:h-14 bg-espresso w-full flex justify-center items-center">
+        <p className="text-cream font-bold text-sm lgtext-base">
+          © 2024 Kophee. All Rights Reserved.
+        </p>
       </footer>
     </Fragment>
   );
