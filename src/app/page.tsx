@@ -379,7 +379,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="find-us" className="flex justify-center lg:mt-60 mb-60">
+      <section id="find-us" className="flex justify-center lg:mt-40 mb-20">
         <div className="flex flex-col lg:flex-row h-fit lg:h-[600px] w-full lg:w-fit">
           <div className="w-full lg:w-[500px] h-[500px] min-h-[500px] lg:border-l-4 border-b-4 border-mocha-brown">
             <GoogleMap />
@@ -416,6 +416,10 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <footer className="h-20 bg-espresso w-full flex justify-center items-center">
+        <p className="text-cream font-bold text-xl">© 2024 Kophee. All Rights Reserved.</p>
+      </footer>
     </Fragment>
   );
 }
