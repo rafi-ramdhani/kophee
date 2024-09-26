@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Fragment } from "react";
+import GoogleMap from "./ui/google-map";
 
 const MENU = {
   food: [
@@ -272,7 +273,7 @@ export default function Home() {
     <Fragment>
       <section id="hero" className="relative">
         {/* hero section */}
-        <div className="relative h-[400px] h-max-[400px] md:lg:h-[700px] md:lg:h-max-[700px]">
+        <div className="relative h-[600px] h-max-[600px] md:lg:h-[700px] md:lg:h-max-[700px]">
           {/* image container */}
           <div className="w-full h-full h-max-full absolute z-0 top-0 left-0">
             <Image
@@ -307,10 +308,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="about-us" className="relative bg-cream pt-32 lg:pt-52 pb-20">
+      <section id="about-us" className="relative bg-cream lg:pt-52 lg:pb-20">
         <AboutUsTitle isFirstOne />
         <div className="flex flex-col lg:flex-row justify-center items-center lg:gap-8 lg:mt-10 lg:h-[600px]">
-          <div className="relative h-[300px] lg:h-[600px] min-h-[300px] w-full lg:w-[400px] lg:rounded-l-[600px] overflow-hidden border-l-mocha-brown lg:border-l-[10px]">
+          <div className="relative h-[500px] lg:h-[600px] min-h-[500px] w-full lg:w-[400px] lg:rounded-l-[600px] overflow-hidden border-l-mocha-brown lg:border-l-[10px]">
             <Image
               fill
               sizes="400px"
@@ -339,7 +340,7 @@ export default function Home() {
 
       <section
         id="menu"
-        className="w-full lg:w-10/12 max-w-[1600px] ml-auto bg-olive-green pb-20 pt-20 pl-10 pr-10 mt-40"
+        className="w-full lg:w-10/12 max-w-[1600px] ml-auto bg-olive-green pb-20 pt-20 pl-10 pr-10 lg:mt-40"
       >
         <h2 className="text-cream font-bold text-6xl md:text-8xl">Menu</h2>
         <div className="flex flex-col gap-4">
@@ -353,9 +354,11 @@ export default function Home() {
 
       <section
         id="testimonial"
-        className="mt-40 w-full flex flex-col items-center bg-mocha-brown pt-10 pb-10"
+        className="lg:mt-40 w-full flex flex-col items-center bg-mocha-brown pt-10 pb-10"
       >
-        <h2 className="text-cream font-bold text-3xl md:text-4xl lg:text-6xl">What they say..</h2>
+        <h2 className="text-cream font-bold text-3xl md:text-4xl lg:text-6xl">
+          What they say..
+        </h2>
         <div className="flex w-[2000px] flex-wrap border-cream justify-center mt-10 items-start">
           {TESTIMONIALS.map((item) => {
             return (
@@ -373,6 +376,44 @@ export default function Home() {
               </div>
             );
           })}
+        </div>
+      </section>
+
+      <section id="find-us" className="flex justify-center lg:mt-60 mb-60">
+        <div className="flex flex-col lg:flex-row h-fit lg:h-[600px] w-full lg:w-fit">
+          <div className="w-full lg:w-[500px] h-[500px] min-h-[500px] lg:border-l-4 border-b-4 border-mocha-brown">
+            <GoogleMap />
+          </div>
+          <div className="flex flex-col p-10 max-w-[500px]">
+            <h2 className="text-3xl font-bold text-espresso">Find us</h2>
+            <h3 className="text-xl font-bold text-espresso mt-10">📍 Kophee</h3>
+            <h4 className="text-xl text-espresso">
+              123 Coffee Lane, Suite 100
+            </h4>
+            <h4 className="text-xl text-espresso">Beanville, CA 90210</h4>
+            <h4 className="text-xl text-espresso mt-5">
+              <strong>Parking</strong>: Free parking available on-site, with
+              additional street parking nearby.
+            </h4>
+            <h4 className="text-2xl font-bold text-espresso mt-5">Hours:</h4>
+            <ul className="pl-6">
+              <li className="list-disc text-espresso">
+                Monday – Friday: 7:00 AM – 7:00 PM
+              </li>
+              <li className="list-disc text-espresso">
+                Saturday: 8:00 AM – 6:00 PM
+              </li>
+              <li className="list-disc text-espresso">
+                Sunday: 8:00 AM – 5:00 PM
+              </li>
+            </ul>
+            <h4 className="text-xl font-bold text-espresso mt-5">
+              Holiday Hours:
+            </h4>
+            <h5 className="text-base text-espresso">
+              Closed on National Holidays.
+            </h5>
+          </div>
         </div>
       </section>
     </Fragment>
